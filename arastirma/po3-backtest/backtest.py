@@ -160,7 +160,13 @@ def plan_kur(veri, atr, i0, i1, rel, yon, k: K.Kurallar, sayac):
     sayac["fvg"] += 1
     giris = L[fvg]  # FVG'nin üst kenarı (yükseliş için); fiyat geri çekilince ilk değilen yer
     stop = L[uc] - k.stop_tampon_atr * atr[i0 + m]
-    hedef = ah if k.hedef == "asya" else giris + 2 * (giris - stop)
+    asgari = k.min_stop_yuzde / 100 * abs(giris)  # v2: asgari stop mesafesi (fiyatın yüzdesi)
+    if giris - stop < asgari:
+        if k.min_stop_modu == "filtre":
+            return None
+        if k.min_stop_modu == "genislet":
+            stop = giris - asgari
+    hedef = ah if k.hedef == "asya" else giris + float(k.hedef.rstrip("R")) * (giris - stop)
     if not stop < giris < hedef:
         return None
     k0 = max(fvg, m) + 1
@@ -390,12 +396,17 @@ def kaldirac_satiri(islemler, risk):
             f"en yüksek {lev[-1]:.1f}x")
 
 
-def main():
+def veri_yukle():
     veriler = {}
     for coin in K.COINLER:
         v = coin_oku(coin)
         if v["ts"]:
             veriler[coin] = (v, atr_hesapla(v), fonlama_oku(coin))
+    return veriler
+
+
+def main():
+    veriler = veri_yukle()
     bas_ts = min(v["ts"][0] for v, _, _ in veriler.values())
     bit_ts = max(v["ts"][-1] for v, _, _ in veriler.values())
     oos = ms(datetime.fromisoformat(K.ORNEKLEM_DISI_BASLANGIC).replace(tzinfo=timezone.utc))

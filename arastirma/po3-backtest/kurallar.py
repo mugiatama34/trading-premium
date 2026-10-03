@@ -35,9 +35,13 @@ class Kurallar:
     geri_kapanis_mum: int = 3  # süpürmeden sonra seviyenin içine kapanış için en fazla mum (N)
     fvg_bekleme_mum: int = 12  # FVG limit emri en fazla bu kadar mum bekler (X), sonra iptal
     stop_tampon_atr: float = 0.1
-    hedef: str = "asya"  # "asya" = Asya aralığının karşı tarafı, "2R" = sabit 2R
+    hedef: str = "asya"  # "asya" = Asya aralığının karşı tarafı, "2R" / "1.5R" / "3R" = sabit R katı
     bias: bool = True  # False: bias filtresi yok, ilk süpürülen taraf işlenir
     pivot: int = 2  # kısa vadeli tepe/dip: her iki yanında bu kadar mum daha alçak/yüksek
+    # v2: stop mesafesi fiyatın bu yüzdesinden kısaysa "filtre" işlemi atlar, "genislet" stopu bu
+    # mesafeye uzatır, "yok" (v1) bir şey yapmaz
+    min_stop_yuzde: float = 0.0
+    min_stop_modu: str = "yok"
 
 
 UTC = Kurallar("utc", "UTC", asya=(0, 6), manipulasyon=(6, 10), mss_son=12, cikis=20)

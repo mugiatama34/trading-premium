@@ -47,3 +47,14 @@ Aşama 4'ün "bitti" ölçütü sağlandı: örneklem dışı testte net bir **"
 - **Düzelt:** Tek umut verici işaret, UTC-2R varyantında rastgeleye karşı küçük bir üstünlük. Daha geniş stoplu (maliyetin R içindeki payını azaltan) bir v2 denenebilir. Ancak bu, sonuçlara bakarak kural uydurma riski taşır ve yeni bir örneklem dışı dönem gerektirir.
 
 Karar kullanıcıya aittir.
+
+## Güncelleme: v2 (geniş stop) denendi, o da geçmedi
+
+Kullanıcının seçimiyle v2 denendi ([../../po3-kural-seti-v2.md](../../po3-kural-seti-v2.md), ayrıntı: [v2_rapor.md](v2_rapor.md)). Asgari stop mesafesi ve hedef seçeneklerinden oluşan 64 aday ayar örneklem içinde tarandı. En iyisi seçildi: NY açılışı, stop en az %1,5 (genişletilerek), hedef 2R.
+
+- Örneklem içinde +0,060R (PF 1,11) olan bu ayar, örneklem dışında **−0,193R (PF 0,71)** verdi. Rastgele yönlü kıyas (−0,105R) bile modelden iyi çıktı.
+- Geniş stop maliyeti amaçlandığı gibi düşürdü: işlem başına 0,06R. Ama maliyetsiz sonuç da negatife döndü (−0,14R). Yani sorun yalnızca maliyet değildi; yön tahmininde güvenilir bir avantaj yok.
+- 64 adayın yalnızca 4'ü örneklem dışında pozitif. Eşikleri geçen tek aday 30 işlemlik (eşik 100) ve örneklem içinde negatif; tesadüf olarak değerlendirilmeli.
+- Örneklem içinde en iyi görünen adaylar (az işlemli "filtre" ayarları) örneklem dışında en kötüler arasında. Bu, aşırı uyumun (overfitting) tipik işaretidir.
+
+**Sonuç:** PO3/AMD bu üç farklı ölçümde (ham varsayım, v1, v2) maliyet sonrası avantaj göstermedi. Yol haritasındaki Aşama 6'ya göre önerim **bırakmak**. Veri, backtest motoru ve maliyet modeli bir sonraki model için hazır.
