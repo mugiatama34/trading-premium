@@ -20,5 +20,5 @@ Dogru sistemi bulana kadar süremiz var
 
 ## Tamamlanan veya geçerliliğini yitiren hedefler
 
-Gecmiste test edilen sistemler github.com/mugiatama/crypto-paper-bot alrinda bulunabilir
+Gecmiste test edilen sistemler github.com/mugiatama34/crypto-paper-bot alrinda bulunabilir
 

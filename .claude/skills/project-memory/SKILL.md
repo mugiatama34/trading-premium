@@ -1,5 +1,5 @@
 ---
-name: proje-hafizasi
+name: project-memory
 description: Kullanıcı “hafızayı güncelle”, “bağlamı denetle”, “kaynakları denetle” veya aynı anlama gelen bir ifade kullandığında proje bağlamını ve kaynak kayıtlarını güvenli biçimde güncellemek ya da denetlemek için kullan.
 ---
 
