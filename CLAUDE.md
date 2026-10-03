@@ -35,7 +35,7 @@ Bu dosya projenin ana ve kalıcı çalışma talimatlarını içerir. Claude Cod
 - Bir bilginin geçici mi kalıcı mı olduğu belirsizse bağlama eklemeden önce kullanıcıya sor.
 - Geçici konuşmaları, reddedilmiş seçenekleri ve doğrulanmamış varsayımları kalıcı bağlam olarak kaydetme.
 - Sohbetin tamamını bağlam dosyalarına kopyalama; yalnızca gelecekte tekrar kullanılacak kesinleşmiş bilgileri işle.
-- Kullanıcı “hafızayı güncelle”, “bağlamı denetle” veya “kaynakları denetle” dediğinde `proje-hafizasi` becerisini kullan.
+- Kullanıcı “hafızayı güncelle”, “bağlamı denetle” veya “kaynakları denetle” dediğinde `project-memory` becerisini kullan.
 - Uzun bir konuşmada kalıcı bağlama işlenmemiş önemli bilgiler oluştuysa, uygun zamanda kullanıcıya hafızayı güncellemeyi isteyip istemediğini sor.
 
 ## Çalışma yaklaşımı
@@ -80,3 +80,13 @@ Ayrıntılı proje geçmişi, hedef kitle, strateji ve kaynak bilgileri buraya
 kopyalanmamalı; context/README.md üzerinden yönlendirilmelidir.
 -->
 
+
+- Proje, kripto piyasalarında komisyon ve sürtünmeler sonrası para kazandıran bir trading yöntemi bulmayı amaçlar; ayrıntılar için `context/README.md` haritasını kullan.
+- Borsada gerçek emir verme, gerçek hesaba bağlanma ve API anahtarı kullanma; çalışmaları analiz, backtest ve paper trading ile sınırla.
+- Bir yöntemi gerçek parayla kullanılmaya uygun olarak sunmadan önce paper trading ile denenmiş olmasını şart koş.
+- Backtest ve performans sonuçlarını her zaman komisyon, kayma (slippage) ve fonlama maliyeti dahil raporla.
+- Her işlemde toplam sermayenin %1–2'si kadar risk al; aksi belirtilmedikçe başlangıç sermayesini 10.000 $ kabul et.
+- Kaldıracı sabit kabul etme; her model için risk oranını dikkate alarak getiriyi en üst düzeye çıkaracak şekilde belirle ve gerekçesini yaz.
+- Backtest ve bot kodlarını Python ile yaz.
+- Analiz ve backtest çıktılarını depodaki `arastirma/` klasörüne kaydet.
+- Kullanıcının trading bilgisi başlangıç ile orta seviye arasındadır; trading kavramlarını buna göre sade açıkla.

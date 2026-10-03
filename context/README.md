@@ -20,7 +20,7 @@ Bu dosya `context/` klasörünün ana haritasıdır. Proje bağlamını tek baş
 
 | Konum | İçeriği | Ne zaman okunmalı? |
 |---|---|---|
-| `project-memory.md` | Projenin tanımı, amacı, kapsamı ve mevcut durumu | Her görevde |
+| `proje-ozeti.md` | Projenin tanımı, amacı, kapsamı ve mevcut durumu | Her görevde |
 | `hedefler.md` | Aktif hedefler, öncelikler ve başarı ölçütleri | Planlama ve önceliklendirmede |
 | `kurallar-ve-sinirlar.md` | Kalıcı kurallar, sınırlar, yasaklar ve yetki gerektiren alanlar | Her görevde |
 | `kararlar.md` | Kesinleşmiş kararlar, gerekçeleri ve durumları | Karar veya değişiklik öncesinde |
