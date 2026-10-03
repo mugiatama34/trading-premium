@@ -32,14 +32,22 @@ def aylar(baslangic: str):
 
 
 def ay_indir(sembol: str, ay: str) -> pd.DataFrame | None:
-    url = f"{ARSIV}/{sembol}/{ARALIK}/{sembol}-{ARALIK}-{ay}.zip"
-    try:
-        with urllib.request.urlopen(url, timeout=60) as yanit:
-            icerik = yanit.read()
-    except urllib.error.HTTPError as hata:
-        if hata.code == 404:  # coin o ay henüz listelenmemiş
-            return None
-        raise
+    ad = f"{sembol}-{ARALIK}-{ay}.zip"
+    onbellek = VERI_KLASORU / "ham" / ad  # daha önce indirilen aylar tekrar indirilmez
+    if onbellek.exists():
+        icerik = onbellek.read_bytes()
+    elif onbellek.with_name(ad + ".404").exists():
+        return None
+    else:
+        try:
+            with urllib.request.urlopen(f"{ARSIV}/{sembol}/{ARALIK}/{ad}", timeout=60) as yanit:
+                icerik = yanit.read()
+        except urllib.error.HTTPError as hata:
+            if hata.code == 404:  # coin o ay henüz listelenmemiş
+                return None
+            raise
+        onbellek.parent.mkdir(parents=True, exist_ok=True)
+        onbellek.write_bytes(icerik)
     with zipfile.ZipFile(io.BytesIO(icerik)) as z:
         ham = z.read(z.namelist()[0]).decode()
     # Yeni dosyalarda başlık satırı var, eskilerde yok
