@@ -1,7 +1,7 @@
 # Kişisel Trading Yol Haritası: PO3 / AMD Modeli
 
 Hazırlanma tarihi: 2026-10-03
-Durum: Taslak (kullanıcı onayı bekliyor)
+Durum: Taslak; açık sorular 2026-10-03'te kullanıcı tarafından yanıtlandı
 
 Bu belge, Elliott Wave denemesinden sonra PO3 (Power of 3) / AMD (Accumulation–Manipulation–Distribution) modelini önce sağlam şekilde öğrenmek, sonra ölçülebilir kurallara çevirip backtest ve paper trading ile sınamak için aşamalı bir plan sunar.
 
@@ -42,7 +42,7 @@ Ayrıca dürüst bir not: ICT/SMC kavramlarının kâr ettirdiğine dair bağım
 ### Hazırlık işleri
 
 - **İşlem günlüğü:** Her işaretleme ve paper işlem için tarih, seans, bias (yön beklentisi), süpürülen likidite, giriş, stop, hedef, sonuç (R cinsinden), ekran görüntüsü ve "kurala uydu mu?" alanları.
-- **Veri:** Binance'in herkese açık geçmiş veri arşivi (data.binance.vision) API anahtarı gerektirmez. BTCUSDT ve ETHUSDT vadeli (perpetual) 1 dakikalık mumlar ve fonlama oranı (funding rate) geçmişi yeterli başlangıçtır.
+- **Veri:** Binance'in herkese açık geçmiş veri arşivi (data.binance.vision) API anahtarı gerektirmez. İzlenecek coin listesinin (BTC, ETH, SOL, ADA, LINK, ETHFI, DOGE, PENGU, MMT, AVAX, DOT, LTC, CRV, BNB, NEAR, XRP, SUI) USDT vadeli (perpetual) 1 dakikalık mumları ve fonlama oranı (funding rate) geçmişi indirilir.
 - **Grafik aracı:** TradingView ücretsiz sürüm, UTC saat diliminde ayarlı.
 
 ---
@@ -125,7 +125,7 @@ Amaç, Aşama 1'de öğrendiklerini **bilgisayarın uygulayabileceği** kurallar
 
 | Bileşen | Taslak kural (v1) |
 |---|---|
-| Piyasa | BTCUSDT ve ETHUSDT perpetual; hafta içi günler |
+| Piyasa | BTC, ETH, SOL, ADA, LINK, ETHFI, DOGE, PENGU, MMT, AVAX, DOT, LTC, CRV, BNB, NEAR, XRP, SUI (USDT perpetual); hafta içi günler |
 | Bias | Önceki günün kapanışı, önceki günün orta noktasının üstündeyse yükseliş, altındaysa düşüş (basit ve ölçülebilir; alternatifler sonra test edilir) |
 | Accumulation | Asya aralığı = 00:00–06:00 UTC en yüksek ve en düşük |
 | Manipulation | 06:00–10:00 UTC arasında, bias'a ters taraftaki Asya seviyesinin süpürülmesi: fiyat seviyeyi geçer, 5 dakikalık mum en fazla N mum içinde seviyenin içine geri kapanır |
@@ -183,7 +183,7 @@ Bu soruların cevabı "fark yok" çıkarsa, backtest'e geçmeden kural seti göz
 
 İşlem sayısı, kazanma oranı, ortalama kazanç/kayıp (R cinsinden), beklenti (expectancy, işlem başına ortalama R), profit factor, maksimum düşüş, en uzun kayıp serisi, yıllık getiri, maliyetlerin brüt kâra oranı, seans/gün/coin bazında kırılım.
 
-### Öneri: devam etmek için eşikler (onayına sunulan taslak)
+### Devam etmek için eşikler (2026-10-03'te kabul edildi)
 
 - Örneklem dışı testte en az 100 işlem,
 - Maliyet sonrası beklenti ≥ +0,15R,
@@ -225,8 +225,16 @@ Bu soruların cevabı "fark yok" çıkarsa, backtest'e geçmeden kural seti göz
 
 ---
 
-## Açık sorular
+## Verilen kararlar (2026-10-03)
 
-- Gün açılışı olarak 00:00 UTC mi, New York gece yarısı mı kullanılacak? (Öneri: ikisini de Aşama 3'te test edip veriye göre seçmek.)
-- Başlangıçta yalnızca BTC mi, BTC + ETH mi? (Öneri: BTC + ETH; SMT onayı için ETH gerekli.)
-- Aşama 4'teki devam eşikleri uygun mu? Onaylanırsa `context/kararlar.md` dosyasına işlenebilir.
+- **Gün açılışı:** 00:00 UTC ve New York gece yarısı açılışı ikisi de test edilir; sonuçlar yan yana raporlanır.
+- **Coin listesi:** BTC, ETH, SOL, ADA, LINK, ETHFI, DOGE, PENGU, MMT, AVAX, DOT, LTC, CRV, BNB, NEAR, XRP, SUI.
+- **Devam eşikleri:** Aşama 4'teki eşikler kabul edildi.
+
+### Coin listesiyle ilgili notlar
+
+- **Geçmiş verinin uzunluğu farklı:** ETHFI (2024), PENGU (2024 sonu) ve MMT (2025) gibi yeni coinlerde 3–4 yıllık veri yok. Her coin kendi mevcut geçmişiyle test edilir ve geçmiş süresi raporda belirtilir. Kısa geçmişli coinlerin sonuçları, tek başına karar vermek için yeterli sayılmaz; tüm listenin birleşik sonucuna katkı olarak değerlendirilir.
+- **Vadeli işlem bulunurluğu:** Her coinin Binance USDT-M perpetual kontratı ve veri arşivi olduğu veri indirme aşamasında doğrulanır; olmayan coin raporda not edilir.
+- **Likidite farkı:** Küçük coinlerde kayma (slippage) daha yüksektir. Maliyet modeli coin bazında, işlem hacmine göre ayarlanır.
+- **SMT onayı:** Ana çift BTC–ETH olarak kalır; diğer coinler için SMT ayrıca ele alınmaz.
+- **Toplam risk:** Aynı anda birden fazla coinde sinyal çıkabilir. Bu coinler büyük ölçüde birlikte hareket ettiği için aynı yönde açık pozisyonların toplam riski sınırlanır (öneri: aynı anda en fazla %3).
