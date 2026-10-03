@@ -1,0 +1,49 @@
+# PO3 Kural Seti v1 Backtesti: Özet ve Yorum
+
+Tarih: 2026-10-03. Kurallar: [../../po3-kural-seti-v1.md](../../po3-kural-seti-v1.md). Ayrıntılı tablolar: [rapor.md](rapor.md). Tüm işlemler: `islemler.csv`.
+
+## Kısa sonuç
+
+**Kural seti v1, MSS ve FVG onaylarıyla da maliyet sonrası para kaybettiriyor.** Dört varyantın hiçbiri örneklem dışı testte beklenti, profit factor ve düşüş eşiklerini geçmedi. Onaylar ham süpürmeye göre bir miktar seçicilik kazandırıyor ama bu, maliyetleri karşılamaya yetmiyor.
+
+## Örneklem dışı test (2024-06 → 2026-09), maliyetler dahil
+
+| Varyant | İşlem | Net R | PF | Maks. düşüş (%1) | Rastgele kıyas (net R) | Rastgeleden iyi mi? |
+|---|---|---|---|---|---|---|
+| UTC, hedef Asya karşı tarafı | 367 | −0,099 | 0,89 | %55,7 | −0,183 | Hayır (p = 0,17) |
+| UTC, hedef 2R | 323 | −0,060 | 0,92 | %36,6 | −0,175 | Sınırda (p = 0,049) |
+| NY, hedef Asya karşı tarafı | 230 | −0,119 | 0,87 | %54,0 | −0,236 | Hayır (p = 0,13) |
+| NY, hedef 2R | 211 | −0,176 | 0,78 | %40,0 | −0,170 | Hayır (p = 0,53) |
+| **Eşik** | ≥ 100 | ≥ +0,15 | ≥ 1,3 | ≤ %20 | | p < 0,05 |
+
+Tüm dönemde (2021-01 → 2026-09) tablo daha da kötü: net R −0,10 ile −0,22 arası, PF 0,75–0,87. 10.000 $ ile %1 riskte başlayan portföy, varyanta göre 1.400–4.900 $'a iniyor (yıllık −%12 ile −%29).
+
+## Neden çalışmıyor?
+
+1. **Kazanma oranı düşük:** Asya hedefinde işlemlerin yalnızca %21–25'i hedefe ulaşıyor. Ortalama kazanç +2,6–2,9R olsa da bu, %75'lik stop oranını karşılamıyor. 2R hedefinde kazanma oranı %33–35. Maliyetsiz başa baş için ~%33, maliyetlerle ~%38 gerekiyor.
+2. **Stoplar dar, maliyet ağır:** Medyan stop mesafesi fiyatın %0,6–0,7'si. Bir giriş-çıkış (komisyon + kayma) işlem başına ortalama **0,13–0,17R** tutuyor. Brüt sonuç sıfıra yakın (−0,07R ile +0,03R arası); farkı maliyet belirliyor. Yol haritasındaki "çok dar stop" uyarısı veride aynen görüldü.
+3. **Yön tahmini zayıf:** Aynı anda, aynı stop ve hedefle rastgele yönde açılan işlemler modelden çok geride değil. Model üç varyantta rastgele kıyastan ~0,1R iyi, NY-2R'de fark yok. Bu üstünlük yalnızca UTC-2R varyantında sınırda anlamlı (p = 0,049), diğerlerinde değil. Yani onaylar biraz bilgi taşıyor olabilir ama küçük ve kararsız.
+4. **Yıllara göre tutarsız:** Tek tek yıllarda PF 0,5 ile 1,6 arasında dalgalanıyor. Hiçbir varyant iki yıl üst üste eşiği geçmiyor.
+5. **Sağlamlık:** Parametreler tek tek değiştirildiğinde (Asya bitişi ±1 saat, N = 2/5, X = 6/24, tampon 0,3 ATR, pivot 3 mum, bias filtresi yok) net R −0,14 ile −0,28 arasında kalıyor. Sonucu pozitife çeviren tek bir ayar yok, yani sonuç tesadüfi bir parametre seçiminden kaynaklanmıyor.
+
+Coin bazında birkaç coin (PENGU, SUI, MMT, bazı varyantlarda ETH) pozitif görünüyor. Ancak örneklemleri 5–50 işlem, güven aralıkları sıfırı içeriyor ve varyanttan varyanta işaret değiştiriyorlar. Geriye dönük seçilirlerse aşırı uyum (overfitting) olur.
+
+## Kaldıraç ve risk yüzdesi
+
+%1 riskte gereken kaldıraç medyan 1,4–1,7x, işlemlerin %90'ında 3,7x'in altında. İzole marjinde tasfiye mesafesi her durumda stopun 3 katından uzak kalıyor (ayrıntı kural seti belgesinde). Beklenti negatif olduğu için %2 risk getiriyi artırmıyor, düşüşü %70–98'e çıkarıyor. Bu model için önerilebilecek bir kaldıraç veya risk yüzdesi yok.
+
+## Sınırlar
+
+- 5 dakikalık veri kullanıldı (yol haritası 1 dakikalık öneriyordu). Mum içi belirsizlikler temkinli çözüldü: aynı mumda stop ve hedef varsa stop sayıldı. Bu, sonuçları biraz kötüleştirmiş olabilir. Ancak brüt sonucun zaten sıfır civarında olması, farkın bundan kaynaklanmadığını düşündürüyor.
+- Komisyon oranları (maker %0,02, taker %0,05) doğrulanmadı. Daha düşük bir VIP seviyesi maliyeti azaltır ama brüt sıfıra yakın olduğundan sonucu pozitife çevirmesi beklenmez.
+- Kural seti tek bir yorumdur. ICT'nin farklı eğitmenleri MSS, FVG ve giriş için farklı tanımlar kullanır. Bu yorum işe yaramadı; bu, her yorumun yaramayacağının kanıtı değildir.
+- Haber günleri (CPI, FOMC) ayrıca ele alınmadı.
+
+## Yol haritasına göre karar önerisi
+
+Aşama 4'ün "bitti" ölçütü sağlandı: örneklem dışı testte net bir **"çalışmıyor"** sonucu var. Yol haritasının Aşama 6 seçeneklerine göre durum **"bırak"** ya da **"düzelt"**:
+
+- **Bırak (önerim):** Hem ham varsayım (Aşama 3) hem onaylı kural seti (Aşama 4) maliyet sonrası negatif. Veri, backtest motoru ve maliyet modeli bir sonraki model için hazır.
+- **Düzelt:** Tek umut verici işaret, UTC-2R varyantında rastgeleye karşı küçük bir üstünlük. Daha geniş stoplu (maliyetin R içindeki payını azaltan) bir v2 denenebilir. Ancak bu, sonuçlara bakarak kural uydurma riski taşır ve yeni bir örneklem dışı dönem gerektirir.
+
+Karar kullanıcıya aittir.

@@ -143,7 +143,7 @@ Amaç, Aşama 1'de öğrendiklerini **bilgisayarın uygulayabileceği** kurallar
 - Tasfiye (liquidation) fiyatının stopun çok ötesinde kalması şartı (izole marjin, tasfiye mesafesi en az stop mesafesinin 3 katı),
 - Beklenen getiri / maksimum düşüş oranını en iyi yapan risk yüzdesi (%1 ile %2 arasında).
 
-Kural setinin çıktısı: `arastirma/po3-kural-seti-v1.md`. Kural değiştikçe sürüm numarası artırılır (v1.1, v2...) ve neyin neden değiştiği yazılır.
+Kural setinin çıktısı: `arastirma/po3-kural-seti-v1.md` (2026-10-03: yazıldı ve backtest edildi, sonuç `po3-backtest/sonuclar/ozet.md`). Kural değiştikçe sürüm numarası artırılır (v1.1, v2...) ve neyin neden değiştiği yazılır.
 
 ---
 
