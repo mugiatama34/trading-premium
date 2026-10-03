@@ -237,4 +237,4 @@ Bu soruların cevabı "fark yok" çıkarsa, backtest'e geçmeden kural seti göz
 - **Vadeli işlem bulunurluğu:** Her coinin Binance USDT-M perpetual kontratı ve veri arşivi olduğu veri indirme aşamasında doğrulanır; olmayan coin raporda not edilir.
 - **Likidite farkı:** Küçük coinlerde kayma (slippage) daha yüksektir. Maliyet modeli coin bazında, işlem hacmine göre ayarlanır.
 - **SMT onayı:** Ana çift BTC–ETH olarak kalır; diğer coinler için SMT ayrıca ele alınmaz.
-- **Toplam risk:** Aynı anda birden fazla coinde sinyal çıkabilir. Bu coinler büyük ölçüde birlikte hareket ettiği için aynı yönde açık pozisyonların toplam riski sınırlanır (öneri: aynı anda en fazla %3).
+- **Toplam risk:** Aynı anda birden fazla coinde sinyal çıkabilir. Bu coinler büyük ölçüde birlikte hareket ettiği için aynı yöndeki açık pozisyonların toplam riski sermayenin en fazla %3'ü ile sınırlanır (2026-10-03'te kabul edildi).
