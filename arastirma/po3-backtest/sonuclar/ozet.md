@@ -58,3 +58,14 @@ Kullanıcının seçimiyle v2 denendi ([../../po3-kural-seti-v2.md](../../po3-ku
 - Örneklem içinde en iyi görünen adaylar (az işlemli "filtre" ayarları) örneklem dışında en kötüler arasında. Bu, aşırı uyumun (overfitting) tipik işaretidir.
 
 **Sonuç:** PO3/AMD bu üç farklı ölçümde (ham varsayım, v1, v2) maliyet sonrası avantaj göstermedi. Yol haritasındaki Aşama 6'ya göre önerim **bırakmak**. Veri, backtest motoru ve maliyet modeli bir sonraki model için hazır.
+
+## Güncelleme: Devam (kırılım) modeli denendi, o da geçmedi
+
+Aşama 3'teki küçük devam eğilimini işlemek için Asya aralığının Londra'da kırıldığı yönde işlem açan ayrı bir model denendi. Kurallar ve seçim yöntemi `devam.py` dosyasının başında; ayrıntılar [devam_rapor.md](devam_rapor.md) dosyasında. 48 aday (piyasa/limit giriş × stop × hedef × bias) yalnızca örneklem içinde tarandı.
+
+- Seçilen aday: NY açılışı, kırılan seviyeye limit (maker) giriş, stop Asya'nın karşı tarafı, hedef yok (gün sonu çıkışı), bias filtreli. Örneklem içinde −0,029R, örneklem dışında **−0,019R, PF 0,96**.
+- Devam eğilimi gerçek: model, aynı anda rastgele yönde açılan işlemleri anlamlı şekilde geçiyor (−0,068R'ye karşı −0,019R, p = 0,004). Ama bu üstünlük yalnızca işlem başına ~0,02–0,05R brüt. Limit girişle bile ~0,05R maliyet bunu siliyor.
+- 48 adaydan yalnızca 1'i örneklem dışında pozitif (+0,000R), eşikleri geçen yok.
+- Stoplar geniş (medyan %2,3–2,7), bu yüzden kaldıraç gerekmiyor. %3 toplam risk sınırı, 17 coinde aynı gün aynı yöne çok sayıda sinyal çıktığı için işlemlerin yaklaşık yarısını atlıyor; coinler birlikte hareket ediyor.
+
+**Sonuç:** Asya aralığı etrafındaki fiyat davranışında ölçülebilir ama ticari olarak kullanılamayacak kadar küçük bir yön bilgisi var. Bu aile (PO3, v1, v2, devam) maliyet sonrası +0,15R eşiğinin çok uzağında kaldı.

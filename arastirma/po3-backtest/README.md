@@ -2,7 +2,7 @@
 
 Yol haritasının ([../yol-haritasi-po3-amd.md](../yol-haritasi-po3-amd.md)) 4. aşaması: [kural seti v1](../po3-kural-seti-v1.md) MSS ve FVG onaylarıyla, maliyetler dahil, örneklem içi/dışı ayrımıyla test edilir.
 
-Sonuç (2026-10-03): v1 de [v2](../po3-kural-seti-v2.md) de eşikleri geçmedi. Özet: [sonuclar/ozet.md](sonuclar/ozet.md).
+Sonuç (2026-10-03/04): v1, [v2](../po3-kural-seti-v2.md) ve devam (kırılım) modeli eşikleri geçmedi. Özet: [sonuclar/ozet.md](sonuclar/ozet.md).
 
 ## Dosyalar
 
@@ -11,6 +11,7 @@ Sonuç (2026-10-03): v1 de [v2](../po3-kural-seti-v2.md) de eşikleri geçmedi. 
 | `kurallar.py` | Kural parametreleri (iki gün açılışı varyantı), maliyetler, sermaye ve risk sınırları |
 | `backtest.py` | Sinyal, işlem simülasyonu, portföy (%3 toplam risk sınırı), rastgele kıyas, Monte Carlo, sağlamlık; `sonuclar/rapor.md` ve `sonuclar/islemler.csv` üretir |
 | `v2_secim.py` | Kural seti v2 (geniş stop): 64 adayı örneklem içinde tarar, en iyisini seçer, örneklem dışında sınar; `sonuclar/v2_rapor.md` ve `sonuclar/v2_islemler.csv` üretir |
+| `devam.py` | Devam (kırılım) modeli: Asya kırılımı yönünde işlem; 48 adayı örneklem içinde tarar, seçileni örneklem dışında sınar; `sonuclar/devam_rapor.md` ve `sonuclar/devam_islemler.csv` üretir |
 | `fonlama_indir.py` | Binance herkese açık arşivinden geçmiş fonlama oranlarını indirir (API anahtarı gerekmez) |
 | `sonuclar/ozet.md` | Sonuçların özeti, eşiklerle karşılaştırma ve yorum |
 
