@@ -45,3 +45,8 @@ Pozisyon büyüklüğü %1 riskte sermayenin ~0,1 katı, %2 riskte ~0,2 katı (e
 ## Sıradaki adım
 
 Proje kuralı: bir yöntem gerçek parayla kullanılmadan önce paper trading ile denenmelidir. Yol haritasına göre en az 8–12 hafta ve en az 50 işlem önerilir. Bu model 17 coinde ayda ortalama ~7 sinyal üretiyor; ancak %3 sınırıyla ayda yalnızca ~2 işlem alınabiliyor. Bu yüzden paper trading'de tüm sinyaller (R cinsinden) izlenmeli; böylece 50 işleme ~7 ayda ulaşılır. Sınır dahil portföy ayrıca izlenir. Kurallar paper trading boyunca değiştirilmemelidir.
+
+## Güncelleme: paper trading başladı (2026-10-05)
+
+Model, kullanıcının isteğiyle `mugiatama34/crypto-paper-bot` deposuna `daily` katmanı olarak eklendi (PR #82; o depodaki ön-kayıt `docs/backtest.md > 6y`). O deponun motoru iki noktada farklıdır: ATR periyodu 14 ve iz süren stop `en yüksek fiyat − 3×ATR` (burada `kapanış − 3×ATR(20)`). Bu varyant aynı veriyle ayrıca koşuldu: örneklem dışında 232 işlem, +0,222R (temkinli +0,173R), PF 1,62. Yani eşikler yine geçiliyor. Kontrol olarak aynı stop kuralıyla rastgele günlerde açılan uzun işlemler de izleniyor. Maliyetler o depoda OKX/Bybit varsayımlarıyla (taker %0,055 + kayma %0,05) hesaplanır. MMT, OKX'te doğrulanamadığı için 16 coinle başlandı; pozisyon sınırı 5 (burada %3 toplam risk = 3 pozisyon). Karar 50 kapanmış işlemde verilecek.
+
