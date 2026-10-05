@@ -10,6 +10,7 @@ Bu dosya kesinleşmiş ve gelecekteki çalışmaları etkileyecek kararları kay
 | 2026-10-03 | Devam eşikleri: örneklem dışı en az 100 işlem, maliyet sonrası beklenti ≥ +0,15R, profit factor ≥ 1,3, %1 riskle maksimum düşüş ≤ %20, rastgele kıyas modelinden anlamlı şekilde iyi, parametre değişikliklerinde sağlam | Paper trading'e geçmeden önce yöntemin avantajını kanıtlamak | aktif | Backtest değerlendirmesi |
 | 2026-10-03 | Aynı yöndeki açık pozisyonların toplam riski sermayenin en fazla %3'üdür | Coinler büyük ölçüde birlikte hareket eder; aynı anda birden fazla sinyalde toplam kaybı sınırlamak | aktif | Pozisyon boyutu, backtest, paper trading |
 | 2026-10-04 | PO3/AMD ve Asya aralığına dayalı modeller (kural seti v1, v2, devam/kırılım modeli) bırakıldı; yeni bir model ailesine geçilir | Hiçbiri örneklem dışında maliyet sonrası devam eşiklerini geçmedi; sonuçlar `arastirma/po3-backtest/sonuclar/ozet.md` | aktif | Model seçimi, backtest |
+| 2026-10-05 | Yeni model ailesi olarak trend takibi (günlük kırılım + ATR iz süren stop) incelenir; kurallar ve sonuçlar `arastirma/trend/` | Seyrek işlem ve geniş stop, PO3'teki yüksek maliyet payı sorununu çözer | aktif | Model seçimi, backtest, paper trading |
 
 ## Kullanım kuralları
 
