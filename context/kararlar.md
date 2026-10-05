@@ -4,6 +4,12 @@ Bu dosya kesinleşmiş ve gelecekteki çalışmaları etkileyecek kararları kay
 
 | Tarih | Karar | Gerekçe | Durum | Etkilediği alanlar |
 |---|---|---|---|---|
+| 2026-10-03 | İncelenen model PO3/AMD'dir; çalışma `arastirma/yol-haritasi-po3-amd.md` yol haritasını izler | Elliott Wave öznel olduğu için başarılı olmadı; PO3/AMD ölçülebilir kurallara çevrilerek test edilecek | tamamlandı (2026-10-04) | Öğrenme, kural seti, backtest |
+| 2026-10-03 | Gün açılışı olarak hem 00:00 UTC hem New York gece yarısı test edilir | Hangisinin daha iyi çalıştığı veriyle belirlenecek | aktif | PO3 kural seti, istatistik çalışması, backtest |
+| 2026-10-03 | Coin listesi: BTC, ETH, SOL, ADA, LINK, ETHFI, DOGE, PENGU, MMT, AVAX, DOT, LTC, CRV, BNB, NEAR, XRP, SUI | Kullanıcının seçimi | aktif | Veri, backtest, paper trading |
+| 2026-10-03 | Devam eşikleri: örneklem dışı en az 100 işlem, maliyet sonrası beklenti ≥ +0,15R, profit factor ≥ 1,3, %1 riskle maksimum düşüş ≤ %20, rastgele kıyas modelinden anlamlı şekilde iyi, parametre değişikliklerinde sağlam | Paper trading'e geçmeden önce yöntemin avantajını kanıtlamak | aktif | Backtest değerlendirmesi |
+| 2026-10-03 | Aynı yöndeki açık pozisyonların toplam riski sermayenin en fazla %3'üdür | Coinler büyük ölçüde birlikte hareket eder; aynı anda birden fazla sinyalde toplam kaybı sınırlamak | aktif | Pozisyon boyutu, backtest, paper trading |
+| 2026-10-04 | PO3/AMD ve Asya aralığına dayalı modeller (kural seti v1, v2, devam/kırılım modeli) bırakıldı; yeni bir model ailesine geçilir | Hiçbiri örneklem dışında maliyet sonrası devam eşiklerini geçmedi; sonuçlar `arastirma/po3-backtest/sonuclar/ozet.md` | aktif | Model seçimi, backtest |
 
 ## Kullanım kuralları
 
