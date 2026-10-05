@@ -1,6 +1,6 @@
 # Yeni Model Ailesi Önerileri
 
-Tarih: 2026-10-04. Durum: öneri; kullanıcı seçimi bekleniyor.
+Tarih: 2026-10-04. Durum: 2026-10-05 tarihinde A (trend takibi) seçildi ve test edildi; sonuç `trend/sonuclar/ozet.md`.
 
 PO3/AMD ve Asya aralığına dayalı modeller bırakıldı (`context/kararlar.md`, sonuçlar `po3-backtest/sonuclar/ozet.md`). Bu çalışmadan çıkan üç ders sonraki modelin seçimini belirliyor:
 
