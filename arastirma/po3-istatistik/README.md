@@ -19,8 +19,10 @@ Her soru iki gün açılışı için ayrı ölçülür: 00:00 UTC ve New York ge
 | `veri_indir.py` | Binance herkese açık arşivinden 5 dakikalık vadeli mumları indirir (API anahtarı gerekmez) |
 | `analiz.py` | Ölçümleri yapar, `sonuclar/rapor.md` ve `sonuclar/gunluk_olaylar.csv` üretir |
 | `sentetik_kontrol.py` | Doğruluk kontrolü: rastgele veride dönüş oranının ~%50 çıktığını doğrular |
+| `analiz_saf.py` | `analiz.py`'nin ek paket gerektirmeyen karşılığı; ek olarak profit factor ve maks. düşüş hesaplar. `--sentetik` ile doğruluk kontrolü yapar |
+| `sonuclar/ozet.md` | Sonuçların özeti, eşiklerle karşılaştırma ve yorum (2026-10-03) |
 
-İndirilen ham veri `veri/` klasörüne yazılır ve depoya eklenmez.
+İndirilen ham veri `veri/` klasörüne yazılır ve depoya eklenmez. Aylık zip dosyaları `veri/ham/` altında saklanır; tekrar çalıştırmada yeniden indirilmez.
 
 ## Yöntem notları
 
